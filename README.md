@@ -51,7 +51,7 @@ Proyecto practico para implemtentar todo el flujo CI/CD, con Terraform y GitHub 
       backend "azurerm" {}
     }
     ```
-    *Nota:* la versión del provedor requerido la tomamos de la documentación oficial de Terraform.
+    *Nota:* la versión del provedor requerido **(required_providers)** la tomamos de la documentación oficial de Terraform.
     
     4.2 Creamos un archivo de nombre ```backend.hcl``` el cual contiene la siguiente información:
     ```sh
