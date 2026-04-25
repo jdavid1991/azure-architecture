@@ -39,7 +39,7 @@ Proyecto practico para implemtentar todo el flujo CI/CD, con Terraform y GitHub 
 4. Para cumplir con las buenas prácticas, configuraremos un backend remoto. De esta manera, el archivo ```.tfstate``` se almacena de forma segura y centralizada en Azure Storage
 
     4.1 Creamos un archivo de nombre ```provider.tf``` y colocamos la siguiente información:
-    ```sh
+    ```hcl
     terraform {
       required_providers {
         azurerm = {
