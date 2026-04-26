@@ -20,7 +20,7 @@ Proyecto practico para implemtentar todo el flujo CI/CD, con Terraform y GitHub 
     ```sh
     az login --use-device-code
     ```
-    2.3. **Instalación Terraform**
+    2.3. **Instalación Terraform-CLI**
     
     ***URL Terraform****
     ```text
@@ -50,11 +50,15 @@ Proyecto practico para implemtentar todo el flujo CI/CD, con Terraform y GitHub 
 
       backend "azurerm" {}
     }
+    
+    provider "azurerm" {
+      features {}
+    }
     ```
     *Nota:* la versión del provedor requerido **(required_providers)** la tomamos de la documentación oficial de Terraform.
     
     4.2 Creamos un archivo de nombre ```backend.hcl``` el cual contiene la siguiente información:
-    ```sh
+    ```hcl
     resource_group_name  = "graveweave"
     storage_account_name = "stgraveweave"                                
     container_name       = "terraform-state"              
@@ -71,3 +75,7 @@ Proyecto practico para implemtentar todo el flujo CI/CD, con Terraform y GitHub 
     Resultado:
 
     ![alt text](image-1.png)
+
+5. Iniciamos construyendo el modulo rg, el ```azurerm_resource_group```
+
+![alt text](image-2.png)
