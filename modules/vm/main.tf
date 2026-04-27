@@ -42,7 +42,23 @@ resource "azurerm_linux_virtual_machine" "vm" {
     type = "SystemAssigned"
   }
 
+  custom_data = base64encode(
+    <<-EOF
+#!/bin/bash
+sudo apt-get update -y
+sudo apt-get install cifs-utils -y
+sudo mkdir -p /mnt/azuredata
+sudo mount -t cifs //${var.storage_account_name}.file.core.windows.net/${var.storage_share_name} /mnt/azuredata \
+-o vers=3.0,username=${var.storage_account_name},password=${var.storage_account_key},dir_mode=0777,file_mode=0777,serverino
+EOF
+  )
+
   tags = var.tags
 }
 
+resource "azurerm_role_assignment" "vm_access" {
+  scope                = var.storage_account_id
+  role_definition_name = "Storage File Data SMB Share Contributor"
+  principal_id         = azurerm_linux_virtual_machine.vm.identity[0].principal_id
+}
 

@@ -29,6 +29,28 @@ variable "size_vm" {
   type = string
 }
 
+variable "storage_account_id" {
+  description = "Storage id"
+  type = string
+}
+
+variable "storage_account_name" {
+  description = "Storage id"
+  type = string
+  default = "data"
+}
+
+variable "storage_share_name" {
+  description = "nombre carpeta compartida"
+  type = string
+}
+
+variable "storage_account_key" {
+  description = "Access key de la cuenta de storage"
+  type        = string
+  sensitive   = true
+}
+
 variable "tags" {
   type = map(string)
   description = "Etiquetas que vienen desde la raiz"

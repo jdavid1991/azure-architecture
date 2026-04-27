@@ -22,6 +22,7 @@ resource "azurerm_subnet" "subnet" {
   resource_group_name  = var.rg_name
   virtual_network_name = azurerm_virtual_network.virtual_network.name
   address_prefixes     = var.address_prefixes
+  service_endpoints    = ["Microsoft.Sql", "Microsoft.Storage"]
 }
 
 resource "azurerm_subnet_network_security_group_association" "nsga" {

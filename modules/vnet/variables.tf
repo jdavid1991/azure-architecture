@@ -12,7 +12,6 @@ variable "location" {
 variable "vnet_name" {
   description = "Nombre vnet"
   type        = string
-  default     = "gravewave"
 }
 
 variable "address_space" {
